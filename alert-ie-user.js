@@ -7,6 +7,7 @@ var ieStyle =
 '#ieAlertBox { width: 656px; height: 480px; margin: auto; margin-top: 100px; background: #fff; border: 1px solid #777; border-radius: 3px; box-shadow: 3px 3px 30px 9px #222; }'+
 '#ieCloserBlock { height: 28px; }'+
 '#ieCloseButton { float: right; padding: 10px; padding-bottom: 8px; padding-top: 3px; font: 14px Verdana, Arial, sans-serif; color: #222; cursor: pointer; }'+
+'#ieCloseButton:hover { text-decoration: none; }'+
 '#ieContentBlock { width: 600px; height: 424px; margin: auto; }'+
 '#ieMessageBlock { font: 19px Times, serif; padding-top: 20px; color: #444; }'+
 '#ieImgBlock { height: 200px; padding-top: 30px; }'+
