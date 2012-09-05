@@ -36,10 +36,12 @@ a better browser. Any of the ones below are great choices.";
 
 var ieBlockBody = 
 
-'<div id="ieAlertBg"></div>'+
+'<div id="ieAlertBg" onClick="closeIeAlert()"></div>'+
 
-'<div id="ieAlertBox">'+
-	'<div id="ieCloserBlock"><a id="ieCloseButton">close</a></div>'+
+'<div id="ieAlertBox" onClick="preventPropagation()">'+
+	'<div id="ieCloserBlock">'+
+		'<a id="ieCloseButton" onClick="closeIeAlert()">close</a>'+
+	'</div>'+
 	'<div id="ieContentBlock">'+
 		'<div id="ieMessageBlock">' + ieMessage + '</div>'+
 		'<div id="ieImgBlock">' + ieLogos + '</div>'+
