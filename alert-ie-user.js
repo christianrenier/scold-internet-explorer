@@ -71,7 +71,8 @@ ieMainBlock.style.position = "absolute";
 ieMainBlock.style.left = "0px";
 ieMainBlock.style.top = "0px";
 ieMainBlock.style.width = "100%";
-ieMainBlock.style.height = "100%"
+ieMainBlock.style.height = "100%";
+ieMainBlock.style.zIndex = "9999";
 
 ieMainBlock.setAttribute("id", "ieAlertMain");
 ieMainBlock.setAttribute("onClick", "closeIeAlert()");
