@@ -4,7 +4,7 @@
 var ieStyle =
 
 '#ieAlertBg { width: 100%; height: 100%; background: #000; opacity: 0.5; position: absolute; left: 0px; top: 0px; z-index: -1; }'+
-'#ieAlertBox { width: 656px; height: 480px; margin: auto; margin-top: 100px; background: #fff; border: 1px solid #777; border-radius: 3px; box-shadow: 3px 3px 20px 10px #222; }'+
+'#ieAlertBox { width: 656px; height: 480px; margin: auto; margin-top: 100px; background: #fff; border: 1px solid #777; border-radius: 3px; box-shadow: 3px 3px 30px 9px #222; }'+
 '#ieCloserBlock { height: 28px; }'+
 '#ieCloseButton { float: right; margin: 10px; font: 14px Times, serif; color: #222; cursor: pointer; }'+
 '#ieContentBlock { width: 600px; height: 424px; margin: auto; }'+
