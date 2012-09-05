@@ -65,24 +65,34 @@ function preventPropagation() {
 
 // MAIN
 
-// html
-var ieMainBlock = document.createElement("div");
+// Append to the body a conditional comment that creates an element only on IE
+var ieConditionHtml = '<!--[if IE]><span class="ieActive"></span><![endif]-->';
+document.body.innerHTML += ieConditionHtml;
 
-ieMainBlock.style.position = "fixed";
-ieMainBlock.style.left = "0px";
-ieMainBlock.style.top = "0px";
-ieMainBlock.style.width = "100%";
-ieMainBlock.style.height = "100%";
-ieMainBlock.style.zIndex = "9999";
+// Check if element was created, indicating user is on IE
+var userOnInternetExplorer = document.body.getElementsByClassName("ieActive").length;
 
-ieMainBlock.setAttribute("id", "ieAlertMain");
-ieMainBlock.setAttribute("onClick", "closeIeAlert()");
+if (userOnInternetExplorer) {
 
-ieMainBlock.innerHTML = ieBlockBody;
+	// build html
+	var ieMainBlock = document.createElement("div");
 
-document.body.appendChild(ieMainBlock);
+	ieMainBlock.style.position = "fixed";
+	ieMainBlock.style.left = "0px";
+	ieMainBlock.style.top = "0px";
+	ieMainBlock.style.width = "100%";
+	ieMainBlock.style.height = "100%";
+	ieMainBlock.style.zIndex = "9999";
 
-// css
-var ieStyleSheet = document.createElement("style");
-ieStyleSheet.innerHTML = ieStyle;
-document.body.appendChild(ieStyleSheet);
+	ieMainBlock.setAttribute("id", "ieAlertMain");
+	ieMainBlock.setAttribute("onClick", "closeIeAlert()");
+
+	ieMainBlock.innerHTML = ieBlockBody;
+
+	document.body.appendChild(ieMainBlock);
+
+	// build css
+	var ieStyleSheet = document.createElement("style");
+	ieStyleSheet.innerHTML = ieStyle;
+	document.body.appendChild(ieStyleSheet);
+}
