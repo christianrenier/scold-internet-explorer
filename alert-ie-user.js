@@ -12,7 +12,7 @@ var ieStyle =
 '#ieMessageBlock { font: 19px Times, serif; padding-top: 20px; color: #444; }'+
 '#ieImgBlock { height: 200px; padding-top: 30px; }'+
 '.ieLogo { height: 200px; width: 200px; }'+
-'.ieLink { height: 100px; width: 200px; float: left; text-align: center; text-decoration: none; font: bold 28px Helvetica, Arial, sans-serif; color: #69c; }';
+'.ieLink { height: 100px; width: 200px; float: left; text-align: center; text-decoration: none; font: bold 28px Helvetica, Arial, sans-serif; color: #47b; }';
 
 
 // html
