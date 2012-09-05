@@ -68,7 +68,7 @@ function preventPropagation() {
 // html
 var ieMainBlock = document.createElement("div");
 
-ieMainBlock.style.position = "absolute";
+ieMainBlock.style.position = "fixed";
 ieMainBlock.style.left = "0px";
 ieMainBlock.style.top = "0px";
 ieMainBlock.style.width = "100%";
