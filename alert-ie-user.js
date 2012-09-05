@@ -6,7 +6,7 @@ var ieStyle =
 '#ieAlertBg { width: 100%; height: 100%; background: #000; opacity: 0.5; position: absolute; left: 0px; top: 0px; z-index: -1; }'+
 '#ieAlertBox { width: 656px; height: 480px; margin: auto; margin-top: 100px; background: #fff; }'+
 '#ieCloserBlock { height: 28px; }'+
-'#ieCloseButton { float: right; margin: 10px; font: 14px Times, serif; color: #222; }'+
+'#ieCloseButton { float: right; margin: 10px; font: 14px Times, serif; color: #222; cursor: pointer; }'+
 '#ieContentBlock { width: 600px; height: 424px; margin: auto; }'+
 '#ieMessageBlock { font: 19px Times, serif; padding-top: 20px; color: #444; }'+
 '#ieImgBlock { height: 200px; padding-top: 30px; }'+
@@ -17,7 +17,7 @@ var ieStyle =
 // html
 var ieLinks =
 
-'<a class="ieLink" href="http://www.google.com/chrome">Downaload Chrome</a>'+
+'<a class="ieLink" href="http://www.google.com/chrome">Download Chrome</a>'+
 '<a class="ieLink" href="http://www.firefox.com">Download Firefox</a>'+
 '<a class="ieLink" href="http://www.opera.com">Download Opera</a>';
 
