@@ -24,9 +24,15 @@ var ieLinks =
 
 var ieLogos = 
 
-'<img class="ieLogo" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Google_Chrome_2011_computer_icon.svg/200px-Google_Chrome_2011_computer_icon.svg.png"></img>'+
-'<img class="ieLogo" src="http://upload.wikimedia.org/wikipedia/commons/e/e7/Mozilla_Firefox_3.5_logo_256.png"></img>'+
-'<img class="ieLogo" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Opera_O.svg/200px-Opera_O.svg.png"></img>';
+'<a href="http://www.google.com/chrome" target="_blank">'+
+	'<img class="ieLogo" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Google_Chrome_2011_computer_icon.svg/200px-Google_Chrome_2011_computer_icon.svg.png"></img>'+
+'</a>'+
+'<a href="http://www.firefox.com" target="_blank">'+
+	'<img class="ieLogo" src="http://upload.wikimedia.org/wikipedia/commons/e/e7/Mozilla_Firefox_3.5_logo_256.png"></img>'+
+'</a>'+
+'<a href="http://www.opera.com" target="_blank">'+
+	'<img class="ieLogo" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Opera_O.svg/200px-Opera_O.svg.png"></img>'+
+'</a>';
 
 var ieMessage = 
 
