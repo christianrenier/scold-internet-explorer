@@ -71,9 +71,12 @@ function preventPropagation() {
 
 // MAIN
 
-// Append to the body a conditional comment that creates an element only on IE
-var ieConditionHtml = '<!--[if IE]><span class="ieActive"></span><![endif]-->';
-document.body.innerHTML += ieConditionHtml;
+// Append a conditional comment that creates an element only on IE to the body
+// Inefficient code necessary to avoid a bug
+var elementToAppend = document.createElement("span");
+elementToAppend.innerHTML = '<!--[if IE]><span class="ieActive"></span><![endif]-->';
+var pageBody = document.getElementsByTagName('body')[0];
+pageBody.appendChild(elementToAppend);
 
 // Check if element was created, indicating user is on IE
 var userOnInternetExplorer = document.body.getElementsByClassName("ieActive").length;
