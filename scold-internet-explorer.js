@@ -64,8 +64,14 @@ function closeIeAlert() {
 	document.body.removeChild(ieAlert);
 }
 
-function preventPropagation() {
-	event.stopPropagation();
+function preventPropagation(e) {
+	// If event object was not sent, user is on IE, so use IE equivalent of event object
+	if (!e) { e = window.event; }
+
+	// If stopPropagation method exists, user is on IE9, so call the method
+	if (e.stopPropagation) { e.stopPropagation(); }
+	// If not, do the IE8 and below equivalent of stopPropagation
+	else e.cancelBubble = true;
 }
 
 
