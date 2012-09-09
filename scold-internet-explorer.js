@@ -52,7 +52,7 @@ var ieBlockBody =
 	'<div id="ieContentBlock">'+
 		'<div id="ieMessageBlock">' + ieMessage + '</div>'+
 		'<div id="ieImgBlock">' + ieLogos + '</div>'+
-		'<div id="ieLinksBlock">' + ieLinks + '</div>'+
+		'<div>' + ieLinks + '</div>'+
 	'</div>'+
 '</div>';
 
