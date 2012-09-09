@@ -18,9 +18,9 @@ var ieStyle =
 // html
 var ieLinks =
 
-'<a class="ieLink" href="http://www.google.com/chrome">Download Chrome</a>'+
-'<a class="ieLink" href="http://www.firefox.com">Download Firefox</a>'+
-'<a class="ieLink" href="http://www.opera.com">Download Opera</a>';
+'<a class="ieLink" href="http://www.google.com/chrome" target="_blank">Download Chrome</a>'+
+'<a class="ieLink" href="http://www.firefox.com" target="_blank">Download Firefox</a>'+
+'<a class="ieLink" href="http://www.opera.com" target="_blank">Download Opera</a>';
 
 var ieLogos = 
 
