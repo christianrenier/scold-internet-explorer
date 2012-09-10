@@ -3,7 +3,7 @@
 // css
 var ieStyle =
 
-'#ieAlertBg { width: 100%; height: 100%; background: #000; opacity: 0.5; position: absolute; left: 0px; top: 0px; z-index: -1; }'+
+'#ieAlertBg { width: 100%; height: 100%; background: #000; opacity: 0.5; filter: alpha(opacity=50); position: absolute; left: 0px; top: 0px; z-index: -1; }'+
 '#ieAlertBox { width: 656px; height: 480px; margin: auto; margin-top: 100px; background: #fff; border: 1px solid #fff; border-radius: 3px; box-shadow: 3px 3px 30px 9px #222; }'+
 '#ieCloserBlock { height: 28px; }'+
 '#ieCloseButton { float: right; padding: 10px; padding-bottom: 8px; padding-top: 3px; font: 14px Verdana, Arial, sans-serif; color: #222; cursor: pointer; }'+
@@ -77,19 +77,24 @@ function preventPropagation(e) {
 
 // MAIN
 
-// Append a conditional comment that creates an element only on IE to the body
+// Append a conditional comment, that creates an element only on IE, to the body
 // Inefficient code necessary to avoid a bug
 var elementToAppend = document.createElement("span");
-elementToAppend.innerHTML = '<!--[if IE]><span class="ieActive"></span><![endif]-->';
+
+var conditionalComment = '<!--[if IE]><span id="ieActive"></span><![endif]-->';
+conditionalComment += '<!--[if lt IE 8]><span id="ltIe8Active"></span><![endif]-->';
+
+elementToAppend.innerHTML = conditionalComment;
 var pageBody = document.getElementsByTagName('body')[0];
 pageBody.appendChild(elementToAppend);
 
+
 // Check if element was created, indicating user is on IE
-var userOnInternetExplorer = document.body.getElementsByClassName("ieActive").length;
+var userOnInternetExplorer = document.getElementById("ieActive");
 
 if (userOnInternetExplorer) {
 
-	// build html
+	// Build HTML
 	var ieMainBlock = document.createElement("div");
 
 	ieMainBlock.style.position = "fixed";
@@ -98,6 +103,8 @@ if (userOnInternetExplorer) {
 	ieMainBlock.style.width = "100%";
 	ieMainBlock.style.height = "100%";
 	ieMainBlock.style.zIndex = "9999";
+	// Fixes spacing bug in IE7
+	if (document.getElementById("ltIe8Active")) { ieMainBlock.style.paddingTop = "100px"; }
 
 	ieMainBlock.setAttribute("id", "ieAlertMain");
 	ieMainBlock.setAttribute("onClick", "closeIeAlert()");
@@ -106,8 +113,17 @@ if (userOnInternetExplorer) {
 
 	document.body.appendChild(ieMainBlock);
 
-	// build css
+
+	// Build CSS
 	var ieStyleSheet = document.createElement("style");
-	ieStyleSheet.innerHTML = ieStyle;
-	document.body.appendChild(ieStyleSheet);
+	ieStyleSheet.type = 'text/css';
+
+	if (ieStyleSheet.styleSheet) {
+    	ieStyleSheet.styleSheet.cssText = ieStyle;
+	} else {
+    	ieStyleSheet.appendChild(document.createTextNode(ieStyle));
+	}
+
+	pageHead = document.getElementsByTagName('head')[0];
+	pageHead.appendChild(ieStyleSheet);
 }
