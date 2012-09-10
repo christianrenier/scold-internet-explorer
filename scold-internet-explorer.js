@@ -85,45 +85,60 @@ var conditionalComment = '<!--[if IE]><span id="ieActive"></span><![endif]-->';
 conditionalComment += '<!--[if lt IE 8]><span id="ltIe8Active"></span><![endif]-->';
 
 elementToAppend.innerHTML = conditionalComment;
-var pageBody = document.getElementsByTagName('body')[0];
-pageBody.appendChild(elementToAppend);
+
+var pageBody;
+
+// Recursive, timed, calls until body element is loaded
+// Then calls a function to finish executing the rest of the script
+function executeOnBodyLoad() {
+	pageBody = document.getElementsByTagName('body')[0];
+	if (!pageBody) { setTimeout(executeOnBodyLoad, 10); }
+	else finishExecuting();
+};
+
+function finishExecuting() {
+
+	pageBody.appendChild(elementToAppend);
 
 
-// Check if element was created, indicating user is on IE
-var userOnInternetExplorer = document.getElementById("ieActive");
+	// Check if element was created, indicating user is on IE
+	var userOnInternetExplorer = document.getElementById("ieActive");
 
-if (userOnInternetExplorer) {
+	if (userOnInternetExplorer) {
 
-	// Build HTML
-	var ieMainBlock = document.createElement("div");
+		// Build HTML
+		var ieMainBlock = document.createElement("div");
 
-	ieMainBlock.style.position = "fixed";
-	ieMainBlock.style.left = "0px";
-	ieMainBlock.style.top = "0px";
-	ieMainBlock.style.width = "100%";
-	ieMainBlock.style.height = "100%";
-	ieMainBlock.style.zIndex = "9999";
-	// Fixes spacing bug in IE7
-	if (document.getElementById("ltIe8Active")) { ieMainBlock.style.paddingTop = "100px"; }
+		ieMainBlock.style.position = "fixed";
+		ieMainBlock.style.left = "0px";
+		ieMainBlock.style.top = "0px";
+		ieMainBlock.style.width = "100%";
+		ieMainBlock.style.height = "100%";
+		ieMainBlock.style.zIndex = "9999";
+		// Fixes spacing bug in IE7
+		if (document.getElementById("ltIe8Active")) { ieMainBlock.style.paddingTop = "100px"; }
 
-	ieMainBlock.setAttribute("id", "ieAlertMain");
-	ieMainBlock.setAttribute("onClick", "closeIeAlert()");
+		ieMainBlock.setAttribute("id", "ieAlertMain");
+		ieMainBlock.setAttribute("onClick", "closeIeAlert()");
 
-	ieMainBlock.innerHTML = ieBlockBody;
+		ieMainBlock.innerHTML = ieBlockBody;
 
-	document.body.appendChild(ieMainBlock);
+		document.body.appendChild(ieMainBlock);
 
 
-	// Build CSS
-	var ieStyleSheet = document.createElement("style");
-	ieStyleSheet.type = 'text/css';
+		// Build CSS
+		var ieStyleSheet = document.createElement("style");
+		ieStyleSheet.type = 'text/css';
 
-	if (ieStyleSheet.styleSheet) {
-    	ieStyleSheet.styleSheet.cssText = ieStyle;
-	} else {
-    	ieStyleSheet.appendChild(document.createTextNode(ieStyle));
+		if (ieStyleSheet.styleSheet) {
+	    	ieStyleSheet.styleSheet.cssText = ieStyle;
+		} else {
+	    	ieStyleSheet.appendChild(document.createTextNode(ieStyle));
+		}
+
+		pageHead = document.getElementsByTagName('head')[0];
+		pageHead.appendChild(ieStyleSheet);
 	}
-
-	pageHead = document.getElementsByTagName('head')[0];
-	pageHead.appendChild(ieStyleSheet);
 }
+
+executeOnBodyLoad();
