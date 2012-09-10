@@ -1,6 +1,5 @@
-// CONSTRUCTION
+// STYLE VARIABLE
 
-// css
 var ieStyle =
 
 '#ieAlertBg { width: 100%; height: 100%; background: #000; opacity: 0.5; filter: alpha(opacity=50); position: absolute; left: 0px; top: 0px; z-index: -1; }'+
@@ -15,7 +14,9 @@ var ieStyle =
 '.ieLink { height: 100px; width: 200px; float: left; text-align: center; text-decoration: none; font: bold 28px Helvetica, Arial, sans-serif; color: #47b; }';
 
 
-// html
+
+// MARKUP VARIABLES
+
 var ieLinks =
 
 '<a class="ieLink" href="http://www.google.com/chrome" target="_blank">Download Chrome</a>'+
@@ -57,7 +58,8 @@ var ieBlockBody =
 '</div>';
 
 
-// FUNCTIONS
+
+// ON CLICK METHODS
 
 function closeIeAlert() {
 	ieAlert = document.getElementById("ieAlertMain");
@@ -75,36 +77,20 @@ function preventPropagation(e) {
 }
 
 
-// MAIN
 
-// Append a conditional comment, that creates an element only on IE, to the body
-// Inefficient code necessary to avoid a bug
-var elementToAppend = document.createElement("span");
+// MAIN FUNCTIONS
 
-var conditionalComment = '<!--[if IE]><span id="ieActive"></span><![endif]-->';
-conditionalComment += '<!--[if lt IE 8]><span id="ltIe8Active"></span><![endif]-->';
+function finishMain() {
 
-elementToAppend.innerHTML = conditionalComment;
-
-var pageBody;
-
-// Recursive, timed, calls until body element is loaded
-// Then calls a function to finish executing the rest of the script
-function executeOnBodyLoad() {
-	pageBody = document.getElementsByTagName('body')[0];
-	if (!pageBody) { setTimeout(executeOnBodyLoad, 10); }
-	else finishExecuting();
-};
-
-function finishExecuting() {
-
+	// Adds conditional comments to a non-null body element
+	var pageBody = document.getElementsByTagName('body')[0];
 	pageBody.appendChild(elementToAppend);
 
 
-	// Check if element was created, indicating user is on IE
+	// If conditional comments created elements, build the pop-up
 	var userOnInternetExplorer = document.getElementById("ieActive");
-
 	if (userOnInternetExplorer) {
+
 
 		// Build HTML
 		var ieMainBlock = document.createElement("div");
@@ -141,4 +127,24 @@ function finishExecuting() {
 	}
 }
 
-executeOnBodyLoad();
+function continueOnBodyLoad() {
+	var pageBody = document.getElementsByTagName('body')[0];
+	// Recursive, timed, calls until body element is loaded
+	if (!pageBody) { setTimeout(finishMainOnBodyLoad, 10); }
+	else finishMain();
+};
+
+
+
+// MAIN - Pop-up is created only if certain elements exist. They'll only be created on IE
+
+//Create conditional comments (Inefficient code necessary to avoid a bug)
+var elementToAppend = document.createElement("span");
+
+var conditionalComments = '<!--[if IE]><span id="ieActive"></span><![endif]-->';
+conditionalComments += '<!--[if lt IE 8]><span id="ltIe8Active"></span><![endif]-->';
+
+elementToAppend.innerHTML = conditionalComments;
+
+// Finish rest of script after body element has loaded
+continueOnBodyLoad();
