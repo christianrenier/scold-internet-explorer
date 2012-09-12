@@ -130,7 +130,7 @@ function finishMain() {
 function continueOnBodyLoad() {
 	var pageBody = document.getElementsByTagName('body')[0];
 	// Recursive, timed, calls until body element is loaded
-	if (!pageBody) { setTimeout(finishMainOnBodyLoad, 10); }
+	if (!pageBody) { setTimeout(finishMain, 10); }
 	else finishMain();
 };
 
