@@ -8,6 +8,8 @@ Description
 
 A self-contained, easy to install javascript file that will display an alert box any time an Internet Explorer user visits your site, telling them how harmful their browser of choice is and offering alternatives to choose from, complete with logos and links to their download page. The alert box is fixed and users can easily click on the dimmed background or the close button to remove the window, similar to lightbox or fancybox.
 
+![ScreenShot](https://raw.github.com/christianrenier/scold-internet-explorer/master/screenshot.png)
+
 ####Features
 
 * Supports Internet Explorer 9.
