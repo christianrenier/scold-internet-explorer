@@ -26,7 +26,7 @@ var ieLinks =
 var ieLogos = 
 
 '<a href="http://www.google.com/chrome" target="_blank">'+
-	'<img class="ieLogo" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Google_Chrome_2011_computer_icon.svg/200px-Google_Chrome_2011_computer_icon.svg.png"></img>'+
+	'<img class="ieLogo" src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Google_Chrome_icon_%282011%29.svg/200px-Google_Chrome_icon_%282011%29.svg.png"></img>'+
 '</a>'+
 '<a href="http://www.firefox.com" target="_blank">'+
 	'<img class="ieLogo" src="http://upload.wikimedia.org/wikipedia/commons/e/e7/Mozilla_Firefox_3.5_logo_256.png"></img>'+
